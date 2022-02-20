@@ -16,7 +16,7 @@ const Property = ({property:{coverPhoto,price,rooms,title,baths,area,agency,exte
             <Image src={coverPhoto ? coverPhoto.url: defaultImage} height={400} width={260} alt="propert images"/>
         </Box>
 
-        <Box width={'full'}>
+        <Box width='full'>
             <Flex paddingTop={'2'} alignItems="center" justifyContent={'space-between'}>
             <Flex alignItems={'center'}>
                 <Box paddingRight={'3'} color="green.300">{isVerified && <GoVerified/>}</Box>
@@ -24,7 +24,19 @@ const Property = ({property:{coverPhoto,price,rooms,title,baths,area,agency,exte
                     AED  {millify(price)} {rentFrequency && `/${rentFrequency}`}
                 </Text>
             </Flex>
+
+            <Box>
+                <Avatar size={'sm'} src={agency?.logo?.url}/>
+            </Box>
             </Flex>
+
+            <Flex justify="space-between" alignItems="center" p="5" width="250px">
+                {rooms} | <FaBed/> | {baths} <FaBath/> {millify(area)} sqfts <BsGridFill/>
+            </Flex>
+
+            <Text>
+            {title.legnth > 30 ? `${title.substrings(0,30)}...` : title}
+            </Text>
         </Box>
     </Flex>
     </Link>
